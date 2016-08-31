@@ -1,0 +1,16 @@
+
+[2016-08-31 09:53:04] easywechat.DEBUG: Current config: {"debug":true,"app_id":"***723ac","secret":"***a0013","token":"easywechat","log":{"level":"debug","file":"/tmp/easywechat.log"}} []
+[2016-08-31 09:53:04] easywechat.DEBUG: server->setMessageHandler [] []
+[2016-08-31 09:53:04] easywechat.DEBUG: Request received: 
+
+{"Method":"POST","URI":"/yii/test/server.php?signature=8ea2ed5d76ebb6f9c9fa739208fa9c3256e62cf3&timestamp=1472629984&nonce=750241545&encrypt_type=aes&msg_signature=66db45fe3b88c7ee91484b4361428fdc89ecef9f","Query":"encrypt_type=aes&msg_signature=66db45fe3b88c7ee91484b4361428fdc89ecef9f&nonce=750241545&signature=8ea2ed5d76ebb6f9c9fa739208fa9c3256e62cf3&timestamp=1472629984","Protocal":"HTTP/1.1","Content":"<xml>\n    <AppId><![CDATA[wx27cbbee18fa9fb94]]></AppId>\n    <Encrypt><![CDATA[9YmGlUhKCcSI8B+dtyZ/adByauWbAS/USkjS6a/dZbWbdLCenPp/K38r7SS+Er+kspCpQothV2lH0H61kwOgEI3S47HrqBIt5m7A1ED4wemAY1ULAvrsshekxyjciHmswSn/XgCwmVI/zyuh6n6bhZP9JM4IYzMpoQIZTm8FIolAei3KCATK6j3UXwH+zM3jyTeRC/wT1V9WLX950nGCY+pNzh/dYPbWBm0nBtpaF+9Ic8vnUZQ920K7mM+uVZroc1a9idgr1HJG+9Wol8K17rMjqBZjOT15oFS6bO28nOL3U19M5VMX15Q5IpFZVvCwKn1YJGckJ91yppCnDIrEkulow6abg68awNOP8ndaJw21qtOoNH9EO9YqUr7XmUZku8UxV3a3tVkOBnkWwGKoSpSJ0T/tCKIS7PqrX3uyd4xXDW0kO+liWyyFSFMpBTJOQExsW6rht6WZQu4pyFY/Zg==]]></Encrypt>\n</xml>\n"} []
+
+{"Method":"POST",
+"URI":"/yii/test/server.php?signature=8ea2ed5d76ebb6f9c9fa739208fa9c3256e62cf3&timestamp=1472629984&nonce=750241545&encrypt_type=aes&msg_signature=66db45fe3b88c7ee91484b4361428fdc89ecef9f",
+"Query":"encrypt_type=aes&msg_signature=66db45fe3b88c7ee91484b4361428fdc89ecef9f&nonce=750241545&signature=8ea2ed5d76ebb6f9c9fa739208fa9c3256e62cf3&timestamp=1472629984",
+"Protocal":"HTTP/1.1",
+"Content":
+"<xml>\n    
+<AppId><![CDATA[wx27cbbee18fa9fb94]]></AppId>\n    
+<Encrypt><![CDATA[9YmGlUhKCcSI8B+dtyZ/adByauWbAS/USkjS6a/dZbWbdLCenPp/K38r7SS+Er+kspCpQothV2lH0H61kwOgEI3S47HrqBIt5m7A1ED4wemAY1ULAvrsshekxyjciHmswSn/XgCwmVI/zyuh6n6bhZP9JM4IYzMpoQIZTm8FIolAei3KCATK6j3UXwH+zM3jyTeRC/wT1V9WLX950nGCY+pNzh/dYPbWBm0nBtpaF+9Ic8vnUZQ920K7mM+uVZroc1a9idgr1HJG+9Wol8K17rMjqBZjOT15oFS6bO28nOL3U19M5VMX15Q5IpFZVvCwKn1YJGckJ91yppCnDIrEkulow6abg68awNOP8ndaJw21qtOoNH9EO9YqUr7XmUZku8UxV3a3tVkOBnkWwGKoSpSJ0T/tCKIS7PqrX3uyd4xXDW0kO+liWyyFSFMpBTJOQExsW6rht6WZQu4pyFY/Zg==]]>
+</Encrypt>\n</xml>\n"} []
