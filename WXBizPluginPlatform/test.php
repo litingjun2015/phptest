@@ -32,6 +32,9 @@ Log::debug("test post 160902");
 $token = WXUtil::get_component_access_token("ticket@@@J95RoqlKV_LWL7GMNqsr2amkGs9Uw7MqZCosV0QO6_4r1iaLP8PIwCUcZbFYUgl78VCDUiCFC4I5HYBVJV7-Xg");
 Log::debug($token);
 
+$pre_auth_code = WXUtil::get_pre_auth_code($token);
+Log::debug($pre_auth_code);
+
 # test xml 160902
 
 //$msg = "<xml>\n    <AppId><![CDATA[wx27cbbee18fa9fb94]]></AppId>\n    <Encrypt><![CDATA[0QpNTBrP143Ns0vojQVOiUyZY1u913j658oGMDMxaMzw9gz9ucrcKV2MlZxsZG0cZ/F7nwHIAIz+ZihQewcBuMrO+G55fBWTcWbrD+wxmygQSBHVK4BdevadAMEj47pNTdJEx2aWgCQtxLK2FSTM6UJCJ8qSLTm1kSdKeWQcJUVqkqUmLbzGKiGnWGAmni9j1fDDyzvb5Wx214dn71qQTvjGXHEcW7eCKXg9OvidMFTMuqnoLiDvqZ84LvPxE1m+fVdejA3X5vEi6hk0o/ZUctoyYrCuZX/bhS0VCKmYnFJeE9BOikAHJIHcGO1GqcwDhCx7KCtzWMQnQ10L7iEGcWY33BP2LXMpTlV7+aW3E5d6RH0wDzgxIbwg605ppOqjn5GMx2Yc8R9VS1pckgZIOPyZ+SxavBV+Kg4cyXyYjXVNglXAwtt9psGMKcAQlWpvD4ITQNhyzMxyCnE791aspQ==]]></Encrypt>\n</xml>";

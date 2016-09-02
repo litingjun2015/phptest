@@ -118,8 +118,11 @@ if ($errCode == 0) {
             
             Log::debug($component_verify_ticket);
             
-            $token = WXUtil::get_component_access_token($component_verify_ticket);
+            $token = WXUtil::get_component_access_token("ticket@@@J95RoqlKV_LWL7GMNqsr2amkGs9Uw7MqZCosV0QO6_4r1iaLP8PIwCUcZbFYUgl78VCDUiCFC4I5HYBVJV7-Xg");
             Log::debug($token);
+
+            $pre_auth_code = WXUtil::get_pre_auth_code($token);
+            Log::debug($pre_auth_code);
             
             break;  
         case 'unauthorized' : // 取消授权  
