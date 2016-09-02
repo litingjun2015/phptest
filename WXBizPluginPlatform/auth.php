@@ -9,6 +9,7 @@ include_once "util/ArrayUtil.php";
 define(OPEN_MSG_VERIFY_TOKEN, "lwU5ANAtbeNfVbu");
 define(OPEN_ENCRYPT_KEY, "lvAnztwetUbepplienNf4ureppixiappwANVbliuwma");
 define(OPEN_APPID, "wx27cbbee18fa9fb94");
+define(OPEN_COMPONENT_VERIFY_TICKET_PATH, "/tmp/ticket.txt");
 
 $options = [
     'debug'  => true,
@@ -40,48 +41,40 @@ $msg_sign = empty ( $_GET ['msg_signature'] ) ? "" : trim ( $_GET ['msg_signatur
 $encryptMsg = file_get_contents ( 'php://input' );  
 $pc = new WXBizMsgCrypt ( OPEN_MSG_VERIFY_TOKEN, OPEN_ENCRYPT_KEY, OPEN_APPID );  
 
-//todo add
-//$postArr = ArrayUtil::xml2array ( $encryptMsg ); // xml对象解析 
 $str = file_get_contents('php://input');
 $xml_tree = new DOMDocument();
 $xml_tree->loadXML($str); 
 $array_e = $xml_tree->getElementsByTagName('Encrypt');
 $encrypt = $array_e->item(0)->nodeValue;
-$format = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><Encrypt><![CDATA[%s]]></Encrypt></xml>";  
+//Log::debug($encrypt);
+$format = "<xml><ToUserName><![CDATA[toUser]]></ToUserName><Encrypt><![CDATA[%s]]></Encrypt></xml>"; 
 
-//todo 
-$from_xml = sprintf ( $format, $encrypt );          
-//$from_xml = sprintf ( $format, $postArr ['Encrypt'] );  
-//
+$from_xml = sprintf ( $format, $encrypt );         
+
 // 第三方收到公众号平台发送的消息  
 $msg = '';  
 $errCode = $pc->decryptMsg ( $msg_sign, $timeStamp, $nonce, $from_xml, $msg ); // 解密  
 //file_put_contents('php://stderr', print_r("\nerrCode: ", TRUE));
 //file_put_contents('php://stderr', print_r($errCode, TRUE));
 
-if ($errCode == 0) {  
-    //file_put_contents('php://stderr', print_r("\nmsg: ", TRUE));
-    file_put_contents('php://stderr', print_r($msg, TRUE));
-    
-    $str = file_get_contents('php://input');
-    $xml_tree = new DOMDocument();
-    $xml_tree->loadXML($msg); 
-    $array_e = $xml_tree->getElementsByTagName('InfoType');
-    $InfoType = $array_e->item(0)->nodeValue;
-    file_put_contents('php://stderr', print_r($InfoType, TRUE));
+//file_put_contents('php://stderr', print_r("\nmsg: ", TRUE));
+//file_put_contents('php://stderr', print_r($msg, TRUE));
 
-    $param = ArrayUtil::xml2array ( $msg );  
-    //todo
+if ($errCode == 0) {
+    
+    $param = ArrayUtil::xml2array2 ( $msg );
+    
+    $InfoType = $param["xml"]["InfoType"];
+    //file_put_contents('php://stderr', print_r("\nInfoType: ", TRUE));
+    //file_put_contents('php://stderr', print_r($InfoType, TRUE));
+
     switch ($InfoType) {  
-    //switch ($param ['InfoType']) {  
         case 'component_verify_ticket' : // 授权凭证  
-            $array_e = $xml_tree->getElementsByTagName('ComponentVerifyTicket');
-            $component_verify_ticket = $array_e->item(0)->nodeValue;
-            Log::debug("component_verify_ticket: ", $component_verify_ticket);
+            $component_verify_ticket = $param["xml"]["ComponentVerifyTicket"];
             
-            $component_verify_ticket = $param ['ComponentVerifyTicket'];  
             $ret ['component_verify_ticket'] = $component_verify_ticket;  
             file_put_contents ( OPEN_COMPONENT_VERIFY_TICKET_PATH, $component_verify_ticket ); // 缓存  
+           
             break;  
         case 'unauthorized' : // 取消授权  
             $status = 2;  
