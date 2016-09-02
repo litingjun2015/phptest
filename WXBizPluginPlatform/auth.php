@@ -74,6 +74,9 @@ if ($errCode == 0) {
             
             $ret ['component_verify_ticket'] = $component_verify_ticket;  
             file_put_contents ( OPEN_COMPONENT_VERIFY_TICKET_PATH, $component_verify_ticket ); // 缓存  
+            
+            Log::debug($component_verify_ticket);
+            Log::debug("ok");
            
             break;  
         case 'unauthorized' : // 取消授权  
