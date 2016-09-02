@@ -12,7 +12,8 @@ define(OPEN_ENCRYPT_KEY, "lvAnztwetUbepplienNf4ureppixiappwANVbliuwma");
 define(OPEN_APPID, "wx27cbbee18fa9fb94");
 define(OPEN_APPSECRET, "b4f3d7045e77823c382fdaa6748a0013");
 define(OPEN_COMPONENT_VERIFY_TICKET_PATH, "/tmp/ticket.txt");
-
+define(OPEN_REDERECT_URI, "http://f3157484.ngrok.io/yii/test/WXBizPluginPlatform/success.php");
+define(OPEN_COMPONENT_LOGIN_URL_PATH, "/tmp/url.txt");
 
 /*
  * 获取第三方平台component_access_token
@@ -123,6 +124,9 @@ if ($errCode == 0) {
 
             $pre_auth_code = WXUtil::get_pre_auth_code($token);
             Log::debug($pre_auth_code);
+            
+            $url ='https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid='.OPEN_APPID.'&pre_auth_code='.$pre_auth_code.'&redirect_uri='.OPEN_REDERECT_URI;
+            file_put_contents ( OPEN_COMPONENT_LOGIN_URL_PATH, $url ); // 缓存  
             
             break;  
         case 'unauthorized' : // 取消授权  

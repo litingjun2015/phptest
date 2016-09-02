@@ -26,14 +26,19 @@ $server->setMessageHandler(function ($message) {
     return "您好！欢迎关注我!";
 });
 
+# test php read file 160902
+
+$url = file_get_contents('/tmp/url.txt', FILE_USE_INCLUDE_PATH);
+Log::debug($url);
+
 # test post 160902
 
-Log::debug("test post 160902");
-$token = WXUtil::get_component_access_token("ticket@@@J95RoqlKV_LWL7GMNqsr2amkGs9Uw7MqZCosV0QO6_4r1iaLP8PIwCUcZbFYUgl78VCDUiCFC4I5HYBVJV7-Xg");
-Log::debug($token);
-
-$pre_auth_code = WXUtil::get_pre_auth_code($token);
-Log::debug($pre_auth_code);
+//Log::debug("test post 160902");
+//$token = WXUtil::get_component_access_token("ticket@@@J95RoqlKV_LWL7GMNqsr2amkGs9Uw7MqZCosV0QO6_4r1iaLP8PIwCUcZbFYUgl78VCDUiCFC4I5HYBVJV7-Xg");
+//Log::debug($token);
+//
+//$pre_auth_code = WXUtil::get_pre_auth_code($token);
+//Log::debug($pre_auth_code);
 
 # test xml 160902
 
