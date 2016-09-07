@@ -126,6 +126,7 @@ if ($errCode == 0) {
             Log::debug($pre_auth_code);
             
             $url ='https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid='.OPEN_APPID.'&pre_auth_code='.$pre_auth_code.'&redirect_uri='.OPEN_REDERECT_URI;
+            Log::debug($url);
             file_put_contents ( OPEN_COMPONENT_LOGIN_URL_PATH, $url ); // 缓存  
             
             break;  
